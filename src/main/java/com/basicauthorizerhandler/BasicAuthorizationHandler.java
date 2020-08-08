@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
-import com.uber.eats.framework.common.CustomLogger;
+import com.demo.framework.common.CustomLogger;
 
 /**
  * Handles Requests Authorization.
