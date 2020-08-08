@@ -40,7 +40,7 @@ public class BasicAuthorizationHandler implements RequestHandler<APIGatewayProxy
 		String authorization = headers.get("Authorization");
 		
 		if (StringUtils.isBlank(authorization))
-			throw new RuntimeException("Unauthorized");
+		    throw new RuntimeException("Unauthorized");
 
 		String[] encodedCreds = authorization.split("\\s+");
 		byte[] decodedCred = Base64.getDecoder().decode(encodedCreds[1]);
@@ -51,13 +51,13 @@ public class BasicAuthorizationHandler implements RequestHandler<APIGatewayProxy
 		String password = plainCredentials[1];
 
 		if ((username.equals("****") && password.equals("****")) == false)
-			throw new RuntimeException("Unauthorized");
+		    throw new RuntimeException("Unauthorized");
 		
 		String tmp[] = request.getMethodArn().split(":");		
 		String awsRegion = tmp[3];
 
 		APIGatewayProxyRequestEvent.ProxyRequestContext proxyContext = request.getRequestContext();
-        APIGatewayProxyRequestEvent.RequestIdentity identity = proxyContext.getIdentity();
+                APIGatewayProxyRequestEvent.RequestIdentity identity = proxyContext.getIdentity();
 		
 		String apiArn = "arn:aws:execute-api:" + awsRegion + ":" + proxyContext.getAccountId() + ":" +
 				proxyContext.getApiId() +"/" + proxyContext.getStage() + "/"+proxyContext.getHttpMethod()+"/";
